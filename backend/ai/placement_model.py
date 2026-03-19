@@ -30,24 +30,23 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
 
-# Pipeline
+# Improved pipeline
 model = Pipeline([
     ("scaler", StandardScaler()),
     ("rf", RandomForestClassifier(
-        n_estimators=200,
-        max_depth=8,
+        n_estimators=500,
+        max_depth=12,
+        min_samples_split=4,
+        class_weight="balanced",
         random_state=42
     ))
 ])
 
-# Train
 model.fit(X_train, y_train)
 
-# Accuracy
 pred = model.predict(X_test)
 print("Model Accuracy:", accuracy_score(y_test, pred))
 
-# Save model
 pickle.dump(model, open("model.pkl", "wb"))
 
-print("Advanced model trained successfully")
+print("Improved model trained successfully")
