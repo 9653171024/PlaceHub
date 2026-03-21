@@ -17,14 +17,15 @@ exports.signup = async (req, res) => {
     res.json({ message: "Signup successful" });
 
   } catch (error) {
-    res.status(500).json({ message: "Signup failed" });
-  }
+  console.log("SIGNUP ERROR:", error); // 🔥 ADD THIS
+  res.status(500).json({ message: error.message });
+}
 };
 
 // LOGIN
 exports.login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     const user = await User.findOne({ email });
 
@@ -36,9 +37,14 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid password" });
     }
 
+    // 🔥 ADD THIS CHECK
+    if (user.role !== role) {
+      return res.status(400).json({ message: "Wrong role selected" });
+    }
+
     res.json({
       token: "dummy-token",
-      role: user.role, // 🔥 VERY IMPORTANT
+      role: user.role,
     });
 
   } catch (error) {

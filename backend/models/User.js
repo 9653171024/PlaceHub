@@ -16,6 +16,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  role: {                  // ✅ ADD THIS
+    type: String,
+    enum: ["student", "faculty", "tpo"],
+    default: "student",
+  },
 });
 
 module.exports = mongoose.model("User", UserSchema);
