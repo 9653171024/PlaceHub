@@ -1,0 +1,56 @@
+.analytics-container{
+  padding:40px;
+  background:#020617;
+  min-height:100vh;
+  color:white;
+}
+
+.analytics-title{
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+
+.kpi-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-bottom:40px;
+}
+
+.kpi-card{
+  background:#0f172a;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid #1e293b;
+}
+
+.kpi-card h3{
+  font-size:14px;
+  color:#94a3b8;
+}
+
+.kpi-card p{
+  font-size:26px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+
+.chart-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.chart-card{
+  background:#0f172a;
+  padding:25px;
+  border-radius:12px;
+  border:1px solid #1e293b;
+}
+
+.trend-card{
+  margin-top:30px;
+}
